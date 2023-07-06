@@ -8,7 +8,7 @@ import asyncHandler from "express-async-handler";
 
 const ImportData = express.Router();
 
-ImportData.post(  "/user",  asyncHandler(
+ImportData.post(  "/users.js",  asyncHandler(
   async (req, res) => {
     await User.deleteOne({});
     const importUser = await User.insertMany(users);
