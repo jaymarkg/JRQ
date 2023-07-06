@@ -2,7 +2,7 @@ import express from "express";
 import User from "./Models/UserModel.js";
 import users from "./Data/users.js";
 import Product from "./Models/ProductModel.js";
-import products from "./data/Products.js";
+import products from "./Data/Products.js";
 import asyncHandler from "express-async-handler";
 
 
@@ -17,7 +17,7 @@ ImportData.post(  "/users.js",  asyncHandler(
   
   );
 
-ImportData.post(  "/products",  asyncHandler(
+ImportData.post(  "/products.js",  asyncHandler(
   async (req, res) => {
     await Product.deleteOne({});
     const importProducts = await Product.insertMany(products);
