@@ -1,11 +1,11 @@
-import express from "express";
-import dotenv from "dotenv"
-import connectDatabase from "./config/MongoDb.js";
-import ImportData from "./DataImport.js";
-import productRoute from "./Routes/ProductRoutes.js";
-import { errorHandler, notFound } from "./Middleware/Errors.js";
-import userRouter from "./Routes/UserRoutes.js";
-import orderRouter from "./Routes/orderRoutes.js";
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDatabase = require("./config/MongoDb.js");
+const ImportData = require("./DataImport.js");
+const productRoute = require("./Routes/ProductRoutes.js");
+const { errorHandler, notFound } = require("./Middleware/Errors.js");
+const userRouter = require("./Routes/UserRoutes.js");
+const orderRouter = require("./Routes/orderRoutes.js");
 
 dotenv.config();
 connectDatabase();
@@ -15,22 +15,18 @@ app.use(express.json());
 //API
 app.use("/api/import", ImportData);
 app.use("/api/products", productRoute);
-app.use("/api/users", userRouter );
+app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
-app.get("/api/config/paypal", (req,res) =>{
-    res.send(process.env.PAYPAL_CLIENT_ID);
-})
-
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
 
 //error handler
 app.use(notFound);
 app.use(errorHandler);
 
+const PORT = process.env.PORT || 5000;
 
+app.listen(PORT, console.log(`Server running on port ${PORT}`));
 
-
-
-
-const PORT = process.env.PORT | 5000
-
-app.listen(PORT, console.log(`server run in port ${PORT}`));
+module.exports = app;
