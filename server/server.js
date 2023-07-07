@@ -6,10 +6,13 @@ import productRoute from "./Routes/ProductRoutes.js";
 import { errorHandler, notFound } from "./Middleware/Errors.js";
 import userRouter from "./Routes/UserRoutes.js";
 import orderRouter from "./Routes/orderRoutes.js";
+import cors from "cors";
+
 
 dotenv.config();
 connectDatabase();
 const app = express();
+const cors =require("cors")
 app.use(express.json());
 
 //API
@@ -28,9 +31,6 @@ app.use(errorHandler);
 
 
 
-
-
-
-const PORT = process.env.PORT || 1000
+const PORT = process.env.PORT
 
 app.listen(PORT, console.log(`server run in port ${PORT}`));
