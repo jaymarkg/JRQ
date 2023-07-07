@@ -67,7 +67,7 @@ export const createProductReview =
         },
       };
 
-      await axios.post(`/api/products/${productId}/review`, review, config);
+      await axios.post(`https://jrq-connect.onrender.com/api/products/${productId}/review`, review, config);
       dispatch({ type: PRODUCT_CREATE_REVIEW_SUCCESS });
     } catch (error) {
       const message =
