@@ -20,9 +20,14 @@ app.use("/api/import", ImportData);
 app.use("/api/products", productRoute);
 app.use("/api/users", userRouter );
 app.use("/api/orders", orderRouter);
+app.use(cors());
+app.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials","true");
+  res.send("API is running..");
+});
 app.get("/api/config/paypal", (req,res) =>{
     res.send(process.env.PAYPAL_CLIENT_ID);
-})
+});
 
 
 //error handler
